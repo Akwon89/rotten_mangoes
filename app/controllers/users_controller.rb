@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to movies_path
+      redirect_to movies_path, notice: "welcome aboard, #{@user.firstname}!"
     else
       render :new
     end
