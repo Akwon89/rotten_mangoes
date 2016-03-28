@@ -1,11 +1,12 @@
+
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movies.all
+    @movies = Movie.all
   end
 
   def show
-    @movies = Movies.find(params[:id])
+    @movies = Movie.find(params[:id])
   end
 
   def new
@@ -17,6 +18,7 @@ class MoviesController < ApplicationController
   end
 
   def create
+
     @movie = Movie.new(movie_params)
 
     if @movie.save
