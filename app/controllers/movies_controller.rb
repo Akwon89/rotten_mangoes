@@ -1,4 +1,3 @@
-
 class MoviesController < ApplicationController
 
   def index
@@ -6,7 +5,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movies = Movie.find(params[:id])
+    @movie = Movie.find(params[:id])
   end
 
   def new
@@ -14,11 +13,10 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movies = Movie.find(params[:id])
+    @movie = Movie.find(params[:id])
   end
 
   def create
-
     @movie = Movie.new(movie_params)
 
     if @movie.save
@@ -51,4 +49,5 @@ class MoviesController < ApplicationController
       :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
     )
   end
+
 end
