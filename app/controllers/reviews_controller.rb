@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   before_filter :load_movie
-
+  before_filter :restrict_access
 
   def new
     @review = @movie.reviews.build
@@ -19,6 +19,13 @@ class ReviewsController < ApplicationController
   end
 
   protected
+
+  def restrict_access
+    if !current_user
+      flash[:alert] = "You must log in."
+      redirect_to new_session_path
+    end
+  end
 
   def load_movie
     @movie = Movie.find(params[:movie_id])
