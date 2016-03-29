@@ -1,5 +1,17 @@
 <%= link_to "Back to this movie", movie_path(@movie) %>
 
+<%= form_for @movie do |f| %>
+  <% if @movie.errors.any? %>
+    <div>
+      <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
+      <ul>
+        <% @movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <h2>Edit this movie.</h2>
 
 <%= render 'form' %>
